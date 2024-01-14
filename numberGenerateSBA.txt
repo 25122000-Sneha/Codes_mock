@@ -1,0 +1,79 @@
+import java.util.Scanner;
+
+public class NumberGenerationSystem {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.println("Welcome to the Number Generation System!");
+
+        generateUsingForLoop(scanner);
+        generateUsingWhileLoop(scanner);
+        generateUsingDoWhileLoop(scanner);
+
+        System.out.println("Goodbye!");
+    }
+
+    public static void generateUsingForLoop(Scanner scanner) {
+        System.out.print("Enter a positive integer for the first N natural numbers: ");
+        int n = scanner.nextInt();
+        System.out.print("First " + n + " natural numbers: ");
+
+        // use a for loop below and print first N natural numbers
+
+        // NOTE:
+        // use System.out.print(naturalNumber + " "); for printing the each number inside for loop
+        // do not print anything other than define line
+        for(int i=1; i<=n; i++)
+        {
+            System.out.print(i+" ");
+        }
+
+    }
+
+    public static void generateUsingWhileLoop(Scanner scanner) {
+        System.out.print("Enter a positive integer for the first M odd numbers: ");
+        int m = scanner.nextInt();
+        System.out.print("First " + m + " odd numbers: ");
+
+        // use a while loop to print first M odd numbers
+        // NOTE:
+        // use System.out.print(oddNumber + " "); for printing the each number inside while loop
+        // do not print anything other than define line
+        int i=1;
+        int count = 0;
+        while(count != m)
+        {
+            if(i%2!=0)
+            {
+                System.out.print(i+" ");
+                count++;
+            }
+            i++;
+            
+        }
+    }
+
+    public static void generateUsingDoWhileLoop(Scanner scanner) {
+        System.out.print("Enter a positive integer for the first P even numbers: ");
+        int p = scanner.nextInt();
+        System.out.print("First " + p + " even numbers: ");
+
+        // use a do while loop to print first P even numbers
+        // NOTE:
+        // use System.out.print(evenNumber + " "); for printing the each number inside do while loop
+        // do not print anything other than define line
+        int count = 0;
+        int i=1;
+        do 
+        {
+            if(i%2==0)
+            {
+                System.out.print(i+" ");
+                count++;
+            }
+            i++;
+            
+        }while(count<p);
+
+    }
+}

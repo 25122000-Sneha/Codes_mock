@@ -1,0 +1,124 @@
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Scanner;
+
+public class FactorialCalculatorApp {
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        int choice;
+
+        do {
+            displayMenu();
+            choice = scanner.nextInt();
+            scanner.nextLine();
+
+            
+            switch (choice) {
+
+                // complete the implementation here and call below given function respectively
+                case 1:
+                    System.out.println("Enter an integer: ");
+                    int n1 = scanner.nextInt();
+                    System.out.println("Factorial of "+n1+" is: "+calculateFactorial(n1));
+                    break;
+                case 2:
+                    System.out.println("Enter an integer: ");
+                    int n2 = scanner.nextInt();
+                    getFactorialSequence(n2);
+                    break;
+                case 3:
+                    System.out.println("Enter an integer: ");
+                    int n3 = scanner.nextInt();
+                    System.out.println("Sum of factorials up to "+n3+" is: "+calculateFactorialSum(n3));
+                    break;
+                case 4:
+                    System.out.println("Enter the first integer (m): ");
+                    int m = scanner.nextInt();
+                    System.out.println("Enter the second integer (n): ");
+                    int n = scanner.nextInt();
+                    System.out.println(m+" ! /"+n+"! = "+calculateFactorialDivision(m, n));
+                    break;
+                case 5:
+                    System.out.println("Goodbye!");
+                    return;
+                default:
+                    System.out.println("Invalid choice. Please select a valid option.");
+                    break;
+
+                    
+
+            }
+
+        } while (choice != 5);
+
+        scanner.close();
+    }
+
+    private static void displayMenu() {
+        System.out.println("\nMenu:");
+        System.out.println("1. Calculate Factorial");
+        System.out.println("2. Factorial Sequence");
+        System.out.println("3. Factorial Sum");
+        System.out.println("4. Factorial Division");
+        System.out.println("5. Exit");
+        System.out.print("Enter your choice: ");
+    }
+
+    public static long calculateFactorial(int n) {
+        // calculate factorial
+        long fact = 1;
+        for(int i=1; i<=n; i++)
+        {
+            fact = fact*i;
+        }
+        return fact;
+        
+    }
+
+    public static Map<Integer, Long> getFactorialSequence(int n) {
+        // calculate factorial sequence and return map
+        // key is number and value is factorial of that number
+        Map<Integer, Long> map = new HashMap<Integer, Long>();
+        for(int i=1; i<=n; i++)
+        {
+            long fact = calculateFactorial(i);
+            map.put(i, fact);
+        }
+        return map;
+        //return new HashMap<Integer, Long>();
+
+    }
+
+    public static long calculateFactorialSum(int n) {
+        // calculate factorial sum
+        long sum = 0L;
+        for(int i=1; i<=n; i++)
+        {
+            sum += calculateFactorial(i);
+        }
+        return sum;
+        //return 0;
+    }
+
+    public static double calculateFactorialDivision(int m, int n) {
+        // 1: throw new IllegalArgumentException when input m or n is incorrect to calculate factorial division
+
+        // 2:  calculate factorial division
+        double val;
+        
+        if(m>0 && n>0)
+        {
+            long factM = calculateFactorial(m);
+            long factN = calculateFactorial(n);
+            val = factM / (double)factN;
+            return val;
+        }
+        else 
+        {
+            throw new IllegalArgumentException("");
+        }
+        
+        
+    }
+}
